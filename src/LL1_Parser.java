@@ -31,7 +31,6 @@ public class LL1_Parser {
 	public void parse(String rawInput) {
 		input = inputParser.parse(rawInput);
 		inputIndex = -1;
-		stack.push(input[0]);
 		stack.push("stmt");
 		
 		String token = readNextToken();
@@ -39,7 +38,6 @@ public class LL1_Parser {
 		
 		do {
 			top = stack.pop();
-			
 			System.out.println("top: " + top + " | token: " + token);
 			
 			if (isNonTerminal(top)) {
@@ -70,7 +68,7 @@ public class LL1_Parser {
 			}
 		} while(true);
 		
-		if(token.equals("$")) {
+		if(token.equals("$") && stack.isEmpty()) {
 			System.out.println("> Input \"" + rawInput + "\" is accepted by LL(1)-Parser");   
         } else {
 			System.out.println("> Input \"" + rawInput + "\" is not accepted by LL(1)-Parser");   
@@ -88,8 +86,10 @@ public class LL1_Parser {
 	private String[] getRule(String nonTerminal, String terminal) {
 		int row = getNonTerminalIndex(nonTerminal);
 		int column = getTerminalIndex(terminal);
+		if (row < 0 || column < 0) {
+			return null;
+		} 
 		String[] rule = table[row][column];
-		
 		return rule;
 	}
 	
