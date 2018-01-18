@@ -8,6 +8,6 @@ public class TypeMatcher implements ITypeMatcher {
 	
 	@Override
 	public Boolean isId(String value) {
-		return value.matches("([a-zA-Z$][a-zA-Z_$0-9]*)|(_[a-zA-Z0-9_]+)");
+		return value.matches("([a-zA-Z][a-zA-Z_0-9]*)|(_[a-zA-Z0-9_]+)");
 	}
 }
