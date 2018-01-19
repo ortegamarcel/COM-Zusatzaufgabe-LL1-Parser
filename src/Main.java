@@ -18,7 +18,6 @@ public class Main {
 		parser.parse("(add 1 __)$");
 		parser.parse("(add 1 _31_4324)$");
 		parser.parse("(add __ (add 4 4) )$");
-		parser.parse("(sub 123 a (sub 3 a b))$)$");
-		parser.parse("(sub $$ (add _1232 0 (sub sublim (add addidas 4324324) addition)) (add 1 a))$");
+		parser.parse("(sub (add _1232 0 (sub sublim (add addidas 4324324) addition)) (add 1 a))$");
 	}
 }
